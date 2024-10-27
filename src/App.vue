@@ -11,6 +11,18 @@
         <p>{{ text }}</p>
     </Modal>
   </div>
+  <div v-if="showFireSaleModal">
+    <Modal theme="sale" @closeModal="toggleShowFireSaleModal">
+      <template v-slot:links>
+        <a href="#">Buy stuff now</a>
+        <a href="#">💸</a>
+        <a href="#">Put it with the other fire</a>
+      </template>
+        <h1>FIRE 🔥 SALE</h1>
+        <p>Oh no! Its a fire sale, now things are even cheaper!</p>
+    </Modal>
+  </div>
+  <button @click.alt="toggleShowFireSaleModal">open fire sale modal</button>
   <button @click="toggleModal">open modal</button>
 </template>
 
@@ -28,12 +40,16 @@ export default {
       header: 'Sign up for the giveaway!',
       text: 'Grab your ninja swag at a discount!',
       showModal: false,
+      showFireSaleModal: false,
     }
   },
   methods: {
     toggleModal() {
       this.showModal = !this.showModal
-    }
+    },
+    toggleShowFireSaleModal() {
+      this.showFireSaleModal = !this.showFireSaleModal
+    },
   }
 }
 </script>
