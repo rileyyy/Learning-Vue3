@@ -8,13 +8,29 @@
 
 <body>
   <div id="app">
-    <div v-if="showBooks">
-      <p>{{ title }} - {{ author }} (age: {{age}})</p>
+    <div>
+      <!--
+        Shows/Hides content by adding/removing it from the dom.
+        Dom manipulation is expensive, so it's better to use v-show.
+      -->
+      <div v-if="showBooks">
+        <p>{{ title }} - {{ author }} (age: {{age}})</p>
+      </div>
+      <button @click="toggleShowBooks">
+        <span v-if="showBooks">Hide Books?</span>
+        <span v-else>Show Books?</span>
+      </button>
+
+
+      <!--  Shows/Hides content based on css (i.e. display: none)-->
+      <div v-show="showBooks">
+        <p>{{ title }} - {{ author }} (age: {{age}})</p>
+      </div>
+      <button @click="toggleShowBooks">
+        <span v-if="showBooks">Hide Books?</span>
+        <span v-else>Show Books?</span>
+      </button>
     </div>
-    <button @click="toggleShowBooks">
-      <span v-if="showBooks">Hide Books?</span>
-      <span v-else>Show Books?</span>
-    </button>
   </div>
   
   <script src="app.js"></script>
