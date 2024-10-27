@@ -9,7 +9,9 @@
 <body>
   <div id="app">
     <p>{{ title }} - {{ author }} (age: {{age}})</p>
-
+    <button @click="age++">Increase age</button>
+    <button @click="decrement">Decrease age</button>
+    <div @click="updateTitle('Animal Farm')">Change title</div>
   </div>
   
   <script src="app.js"></script>
