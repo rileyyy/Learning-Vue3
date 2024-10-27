@@ -1,4 +1,10 @@
 const app = Vue.createApp({
-  template: '<h2>I am a template</h2>'
+  data() {
+    return {
+      title: '1984',
+      author: 'George Orwell',
+      age: 45,
+    }
+  }
 });
 app.mount('#app');
