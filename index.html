@@ -8,10 +8,13 @@
 
 <body>
   <div id="app">
-    <p>{{ title }} - {{ author }} (age: {{age}})</p>
-    <button @click="age++">Increase age</button>
-    <button @click="decrement">Decrease age</button>
-    <div @click="updateTitle('Animal Farm')">Change title</div>
+    <div v-if="showBooks">
+      <p>{{ title }} - {{ author }} (age: {{age}})</p>
+    </div>
+    <button @click="toggleShowBooks">
+      <span v-if="showBooks">Hide Books?</span>
+      <span v-else>Show Books?</span>
+    </button>
   </div>
   
   <script src="app.js"></script>
