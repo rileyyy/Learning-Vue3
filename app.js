@@ -2,24 +2,19 @@ const app = Vue.createApp({
   data() {
     return {
       showBooks: true,
-      title: '1984',
-      author: 'George Orwell',
-      age: 45,
-      x: 0,
-      y: 0,
+      books: [
+        { title: '1984', author: 'George Orwell' },
+        { title: 'Animal Farm', author: 'George Orwell' },
+        { title: 'Name of the Wind', author: 'Patrick Rothfuss' },
+        { title: 'The Final Empire', author: 'Brandon Sanderson' },
+        { title: 'The Hero of Ages', author: 'Brandon Sanderson'},
+      ]
     }
   },
   methods: {
     toggleShowBooks() {
       this.showBooks = !this.showBooks;
     },
-    handleEvent(event) {
-      console.log(`Handled ${event.type}`);
-    },
-    handleMouseMove(event) {
-      this.x = event.offsetX;
-      this.y = event.offsetY;
-    }
   }
 
 });
