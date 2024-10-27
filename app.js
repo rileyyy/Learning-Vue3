@@ -4,11 +4,11 @@ const app = Vue.createApp({
       url: 'https://www.google.com',
       showBooks: true,
       books: [
-        { title: '1984', author: 'George Orwell' },
-        { title: 'Animal Farm', author: 'George Orwell' },
-        { title: 'Name of the Wind', author: 'Patrick Rothfuss' },
-        { title: 'The Final Empire', author: 'Brandon Sanderson' },
-        { title: 'The Hero of Ages', author: 'Brandon Sanderson'},
+        { title: '1984', author: 'George Orwell', isFav: true },
+        { title: 'Animal Farm', author: 'George Orwell', isFav: true },
+        { title: 'Name of the Wind', author: 'Patrick Rothfuss', isFav: false },
+        { title: 'The Final Empire', author: 'Brandon Sanderson', isFav: false },
+        { title: 'The Hero of Ages', author: 'Brandon Sanderson', isFav: false },
       ]
     }
   },

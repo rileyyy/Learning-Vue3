@@ -5,25 +5,27 @@
   <title>Vue3 Tutorial</title>
   <script src="https://unpkg.com/vue@3.0.2"></script>
   <style>
-    .box {
-      padding: 100px 0;
-      width: 400px;
-      text-align: center;
-      background: mistyrose;
-      margin: 20px;
-      display: inline-block
+    li {
+      list-style: none;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .fav {
+      background: #f8d57c;
     }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <!--  Either v-bind: or just :-->
-    <a :href="url">Its Google</a>
-
     <div v-if="showBooks">
       <ul>
-        <li v-for="book in books">
+        <li v-for="book in books" :class="{ fav: book.isFav }">
           <h3>{{ book.title }}</h3>
           <p>{{ book.author }}</p>
         </li>
