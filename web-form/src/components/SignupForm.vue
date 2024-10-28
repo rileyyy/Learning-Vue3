@@ -1,10 +1,11 @@
 <template>
-  <form>
+  <form @submit.prevent="handleSubmit">
     <label>Email:</label>
     <input type="email" required v-model="email">
 
     <label>Password:</label>
     <input type="password" v-model="password">
+    <div v-if="passwordError" class="error">{{ passwordError }}</div>
 
     <label>Role:</label>
     <select v-model="role">
@@ -23,12 +24,11 @@
       <input type="checkbox" required v-model="terms">
       <label>Accept Terms & Conditions</label>
     </div>
-  </form>
 
-  <p>Email: {{ email }}</p>
-  <p>Password: {{ password }}</p>
-  <p>Role: {{ role }}</p>
-  <p>Terms:  {{ terms ? "" : "Not" }} Accepted</p>
+    <div class="submit">
+      <button type="submit">Create an Account</button>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -40,6 +40,7 @@ export default {
     terms: false,
     tempSkill: '',
     skills: [],
+    passwordError: '',
   }),
   methods: {
     onKeyup(e) {
@@ -53,6 +54,21 @@ export default {
     },
     removeSkill(skill) {
       this.skills = this.skills.filter(s => s !== skill);
+    },
+    handleSubmit() {
+      this.passwordError = this.password.length < 8
+        ? 'Password must be at least 8 characters'
+        : '';
+
+      if (!this.passwordError) {
+        console.log({
+          email: this.email,
+          password: this.password,
+          role: this.role,
+          skills: this.skills,
+          terms: this.terms,
+        });
+      }
     },
   },
 }
@@ -112,5 +128,25 @@ input[type=checkbox] {
 .pill p, .pill div {
   display: inline-block;
   padding: 0 8px;
+}
+
+button {
+  background: #0b6dff;
+  border: 0;
+  padding: 12px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+}
+
+.submit {
+  text-align: center;
+}
+
+.error {
+  color: #ff0062;
+  margin-top: 12px;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 </style>
