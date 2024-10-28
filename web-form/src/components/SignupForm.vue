@@ -4,13 +4,20 @@
     <input type="email" required v-model="email">
 
     <label>Password:</label>
-    <input type="password" required v-model="password">
+    <input type="password" v-model="password">
 
     <label>Role:</label>
     <select v-model="role">
       <option value="developer">Web Developer</option>
       <option value="designer">Web Designer</option>
     </select>
+
+    <label>Skills:</label>
+    <input type="text" v-model="tempSkill" @keyup="onKeyup">
+    <div v-for="skill in skills" :key="skill" class="pill">
+      <p>{{ skill }}</p>
+      <button>❌</button>
+    </div>
 
     <div class="terms">
       <input type="checkbox" required v-model="terms">
@@ -27,11 +34,24 @@
 <script>
 export default {
   data: () => ({
-    email: '',
+    email: 'e@m.ail',
     password: '',
     role: '',
     terms: false,
+    tempSkill: '',
+    skills: [],
   }),
+  methods: {
+    onKeyup(e) {
+      if (e.key === 'Enter' && this.tempSkill.trim()) {
+        if (!this.skills.includes(this.tempSkill.trim())) {
+          this.skills.push(this.tempSkill.trim());
+        }
+
+        this.tempSkill = '';
+      }
+    },
+  },
 }
 </script>
 
