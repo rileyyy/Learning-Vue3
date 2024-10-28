@@ -16,7 +16,7 @@
     <input type="text" v-model="tempSkill" @keyup="onKeyup">
     <div v-for="skill in skills" :key="skill" class="pill">
       <p>{{ skill }}</p>
-      <button>❌</button>
+      <div @click="removeSkill(skill)">𝗫</div>
     </div>
 
     <div class="terms">
@@ -50,6 +50,9 @@ export default {
 
         this.tempSkill = '';
       }
+    },
+    removeSkill(skill) {
+      this.skills = this.skills.filter(s => s !== skill);
     },
   },
 }
@@ -91,5 +94,23 @@ input[type=checkbox] {
   margin: 0 10px 0 0;
   position: relative;
   top: 2px;
+}
+
+.pill {
+  display: inline-block;
+  margin: 20px 12px 0 0;
+  padding: 8px 12px;
+  background: #eee;
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #777;
+  cursor: pointer;
+}
+
+.pill p, .pill div {
+  display: inline-block;
+  padding: 0 8px;
 }
 </style>
