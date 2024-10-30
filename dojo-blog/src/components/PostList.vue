@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { onMounted } from 'vue';
 import SinglePost from './SinglePost.vue';
 
 export default {
@@ -15,7 +16,6 @@ export default {
     SinglePost,
   },
   setup(props) {
-    return { posts: props.posts };
   }
 }
 </script>
